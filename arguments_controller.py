@@ -44,7 +44,7 @@ class Argument:
 class ArgumentsManager:
     """Cette class permet de gérer les arguments dans les scripts"""    
     
-    def __init__(self, script_description: str, array_of_args: list[Argument] = []) -> None:
+    def __init__(self, script_description: str, array_of_args: list = []) -> None:
         """Constructor of the ArgsManager class.
 
         Args:
@@ -56,7 +56,7 @@ class ArgumentsManager:
         self.argv = sys.argv[1:]
         
         self.script_description = check_type(script_description, str)
-        self.array_of_args: list[Argument] = check_type_in_array(array_of_args, Argument)
+        self.array_of_args = check_type_in_array(array_of_args, Argument)
         
         self.time_start = time()
         self.timestamp = int(time())
@@ -93,7 +93,7 @@ class ArgumentsManager:
 
     def __gestion_of_arguments(self) -> None:
         letter_string = "vh"
-        name_array: list[str] = ["verbose", "help"]
+        name_array = ["verbose", "help"]
         
         for argument in self.array_of_args:
             letter_string += argument.letter
@@ -144,4 +144,4 @@ class ArgumentsManager:
         
         total_time = time() - self.time_start # récupération et calcul du temps de récupération des données
 
-        print(f"{bcolors.YELLOW}Temp d'éxécution : {total_time}s {bcolors.END}") # affichage de le compte rendu
+        print(f"{bcolors.YELLOW}Temp d'éxécution : {round(total_time, 2)}s {bcolors.END}") # affichage de le compte rendu

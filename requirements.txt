@@ -1,0 +1,2 @@
+DateTime==4.4
+PyMySQL==1.0.2
